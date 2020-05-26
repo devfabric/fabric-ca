@@ -1,0 +1,45 @@
+
+version: 1.0.0
+
+client:
+  organization: ca.org1.example.com
+  logging:
+    level: debug
+  cryptoconfig:
+    path: ${WORKDIR}/configs/crypto-config
+  credentialStore:
+    path: "./configs/key/signcerts"
+    cryptoStore:
+      path: ./configs/key
+  BCCSP:
+    security:
+      enabled: true
+    default:
+      provider: "SW"
+    hashAlgorithm: "SHA2"
+    softVerify: true
+    level: 256
+
+organizations:
+   ca.org1.example.com:
+     mspid: Org1MSP
+     cryptoPath:  ./configs/key/signcerts
+     certificateAuthorities:
+      - ca.org1.example.com
+
+certificateAuthorities:
+  ca.org1.example.com:
+    url: http://ca.org1.example.com:7054 #写如/etc/hosts域名中
+    grpcOptions:
+      ssl-target-name-override: ca.org1.example.com
+    tlsCACerts:
+      path: ${WORKDIR}/configs/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
+      client:
+        key:
+          path: ${WORKDIR}/configs/crypto-config/peerOrganizations/org1.example.com/tlsca/173faed5d742cb4039e2b9b12fe4c55c5300c36e2d344c6f96a4af83d8629d9a_sk
+        cert:
+          path: ${WORKDIR}/configs/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
+    registrar:
+       enrollId: root
+       enrollSecret: adminpw
+    caName: ca-org1

@@ -62,7 +62,7 @@ github.com/hashicorp/hcl/hcl/token
 github.com/hashicorp/hcl/json/parser
 github.com/hashicorp/hcl/json/scanner
 github.com/hashicorp/hcl/json/token
-# github.com/hyperledger/fabric v1.4.4
+# github.com/hyperledger/fabric v1.4.6
 github.com/hyperledger/fabric/bccsp
 github.com/hyperledger/fabric/bccsp/factory
 github.com/hyperledger/fabric/bccsp/pkcs11

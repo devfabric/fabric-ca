@@ -1,7 +1,7 @@
 package main
 
 import (
-	identity "ca-client/identity"
+	identity "fabric-ca/identity"
 	"fmt"
 	"math/rand"
 	"os"
@@ -35,7 +35,14 @@ func main() {
 		panic(err)
 	}
 
-	caClient, err := identity.GetMspClient(workDir, "./configs/ca-config.yaml")
+	//设置环境变量，防止应用未设置
+	workDirForFabSDK := os.Getenv("WORKDIR")
+	if workDirForFabSDK == "" {
+		os.Setenv("WORKDIR", workDir)
+	}
+	fmt.Println("runDir=", workDir)
+
+	caClient, err := identity.GetMspClient(workDir, "./configs/fabric-ca.yaml")
 	if err != nil {
 		fmt.Println(err.Error())
 		return
@@ -62,7 +69,7 @@ func main() {
 		return
 	}
 
-	return
+	// return
 
 	alg, pubKey, err := caClient.GetPubKey(uname)
 	if err != nil {

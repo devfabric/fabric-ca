@@ -1,11 +1,11 @@
-module ca-client
+module fabric-ca
 
 go 1.13
 
 require (
 	github.com/gogo/protobuf v1.2.1 // indirect
 	github.com/google/go-cmp v0.3.1 // indirect
-	github.com/hyperledger/fabric v1.4.4
+	github.com/hyperledger/fabric v1.4.6
 	github.com/hyperledger/fabric-sdk-go v1.0.0-beta1
 	github.com/op/go-logging v0.0.0-20160315200505-970db520ece7 // indirect
 	github.com/prometheus/procfs v0.0.5 // indirect
